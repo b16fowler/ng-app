@@ -1,16 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 @Component({
   selector: 'app-header',
   imports: [],
-  template: ` <h1>This is the header component</h1> `,
+  template: `
+    <nav>{{ title() }}</nav>
+  `,
   styles: [
     `
-      h1 {
+      nav {
         color: red;
+        padding: 3%;
         text-align: center;
+        font-size: xx-large;
+        background-color: black;
       }
     `,
   ],
 })
-export class Header {}
+
+export class Header {
+  title = signal("This is the Header component");
+}
