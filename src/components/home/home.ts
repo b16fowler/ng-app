@@ -7,22 +7,30 @@ import { Counter } from "../../components/counter/counter";
   standalone: true,
   imports: [Greeting, Counter],
   template: `
-  <h3>This is the body component</h3> 
-  <app-greeting [message]="homeMessage()"/>
-  <app-counter />
-  <input placeholder="Type something" type="text" (keyup)="keyUpHandler($event)" />
+    <h3>{{title()}}</h3> 
+    <app-greeting [message]="greetingMessage()"/>
+    <app-counter />
+    <input id="input-counter" placeholder="Type something" type="text" (keyup)="keyUpHandler($event)" />
   `,
   styles: [
     `
       h3 {
-        color: blue;
+        color: black;
         text-align: center;
+        margin-bottom: 5%;
+      }
+      #input-counter {
+        display: block;
+        margin: 0 auto;
+        margin-top: 1%;
       }
     `,
   ],
 })
 export class Home {
-  homeMessage = signal("This is the homeMessage variable");
+  title = signal("This is the Home component title");
+
+  greetingMessage = signal("This is the greetingMessage variable, passed from the Home component");
 
   keyUpHandler(event: KeyboardEvent) {
     console.log(`User pressed the ${event.key} key`);
