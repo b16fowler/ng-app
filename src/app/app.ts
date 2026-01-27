@@ -9,6 +9,12 @@ import { Header } from '../components/header/header';
     <app-header />
     <app-home />
   `,
-  styles: [],
+  styles: [
+    `
+      app-home {
+        text-align: center;
+      }
+    `
+  ],
 })
 export class App {}
