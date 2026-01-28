@@ -1,16 +1,23 @@
 import { Component, signal } from '@angular/core';
-import { Greeting } from "../../components/greeting/greeting";
-import { Counter } from "../../components/counter/counter";
+import { Greeting } from '../../components/greeting/greeting';
+import { Counter } from '../../components/counter/counter';
+import { Search } from '../search/search';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [Greeting, Counter],
+  imports: [Greeting, Counter, Search],
   template: `
-    <h3>{{title()}}</h3> 
-    <app-greeting [message]="greetingMessage()"/>
+    <h3>{{ title() }}</h3>
+    <app-greeting [message]="greetingMessage()" />
     <app-counter />
-    <input id="input-counter" placeholder="Type something" type="text" (keyup)="keyUpHandler($event)" />
+    <input
+      id="input-counter"
+      placeholder="Type something"
+      type="text"
+      (keyup)="keyUpHandler($event)"
+    />
+    <app-search />
   `,
   styles: [
     `
@@ -28,9 +35,9 @@ import { Counter } from "../../components/counter/counter";
   ],
 })
 export class Home {
-  title = signal("This is the Home component title");
+  title = signal('This is the Home component title');
 
-  greetingMessage = signal("This is the greetingMessage variable, passed from the Home component");
+  greetingMessage = signal('This is the greetingMessage variable, passed from the Home component');
 
   keyUpHandler(event: KeyboardEvent) {
     console.log(`User pressed the ${event.key} key`);
